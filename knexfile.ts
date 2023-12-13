@@ -4,7 +4,12 @@ import { Knex } from 'knex';
 
 const config: Knex.Config = {
   client: 'pg',
-  connection: process.env.POSTGRES_URL, // + (process.env.NODE_ENV === 'development' ? '' : '?sslmode=require'),
+  connection: {
+    connectionString: "postgresql://postgres@localhost:5432/webapp_dev?sslmode=require&ssl=true",
+    //  process.env.POSTGRES_URL,
+    ssl: { rejectUnauthorized: false }
+  },
+  // connection: process.env.POSTGRES_URL, // + (process.env.NODE_ENV === 'development' ? '' : '?sslmode=require'),
   migrations: {
     extension: 'ts',
   },
