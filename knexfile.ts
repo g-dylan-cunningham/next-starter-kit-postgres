@@ -8,6 +8,9 @@ const config: Knex.Config = {
   migrations: {
     extension: 'ts',
   },
+  pool: {
+    min: 0
+  }
 };
 
 export default config;
